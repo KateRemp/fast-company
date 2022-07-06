@@ -15,8 +15,7 @@ const Users = () => {
 
 	let counter = contacts.length
 
-
-	const getCounterMessage = () => {
+	const getCounterMessage = (counter) => {
 		let message = '';
 		message = counter > 4 || counter === 1 ? counter + " Человек тусанёт с тобой сегодня" :
 			counter === 0 ? "Никто с тобой не тусанёт" :
@@ -64,7 +63,7 @@ const Users = () => {
 
 	return (
 		<>
-			<h1 ><span className={getCounterClasses()}>{getCounterMessage()}</span></h1>
+			<h1 ><span className={getCounterClasses()}>{getCounterMessage(counter)}</span></h1>
 			<table className="table">
 				<thead>
 					{contactsTableHead()}
