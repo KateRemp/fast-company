@@ -13,28 +13,27 @@ const Users = () => {
 		console.log(contact)
 	};
 
-	const counter = () => {
-		return contacts.length
-	};
+	let counter = contacts.length
+
 
 	const getCounterMessage = () => {
 		let message = '';
-		message = counter() > 4 || counter() === 1 ? counter() + " Человек тусанёт с тобой сегодня" :
-			counter() === 0 ? "Никто с тобой не тусанёт" :
-				counter() + " Человека тусанёт с тобой сегодня"
+		message = counter > 4 || counter === 1 ? counter + " Человек тусанёт с тобой сегодня" :
+			counter === 0 ? "Никто с тобой не тусанёт" :
+				counter + " Человека тусанёт с тобой сегодня"
 		return message
 	};
 
 	const getCounterClasses = () => {
 		let classes = "badge "
-		classes += counter() === 0 ? "bg-danger" : "bg-primary"
+		classes += counter === 0 ? "bg-danger" : "bg-primary"
 		return classes
 	}
 
 
 	const contactsTableBody = () => {
 		return (
-			counter() !== 0 &&
+			counter !== 0 &&
 			contacts.map((contact) => (
 				<tr key={contact._id}>
 					<td >{contact.name}</td>
@@ -51,7 +50,7 @@ const Users = () => {
 
 	const contactsTableHead = () => {
 		return (
-			counter() !== 0
+			counter !== 0
 			&& <tr>
 				<th scope="col">Имя</th>
 				<th scope="col">Качества</th>
