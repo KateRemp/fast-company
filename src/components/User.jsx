@@ -1,6 +1,6 @@
 import React from "react";
-import Qualitie from "./qalitie";
-import BookMark from "./bookmark";
+import Qualitie from "./Qalitie";
+import BookMark from "./Bookmark";
 
 const User = (props) => {
 
@@ -17,10 +17,8 @@ const User = (props) => {
 				<td>{props.completedMeetings}</td>
 				<td>{props.rate} /5</td>
 				<td><BookMark
-					{...props}
-				//status={props.bookmark}
-				//toggleBookmark={props.onToggleBookMark}
-				//userId={props._id}
+					status={props.bookmark}
+					onClick={() => props.onToggleBookMark(props._id)}
 				/>
 				</td>
 				<td>

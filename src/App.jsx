@@ -1,6 +1,6 @@
 import React, { useState } from "react";
-import Users from "./components/users";
-import SearchStatus from "./components/searchStatus";
+import Users from "./components/Users";
+import SearchStatus from "./components/SearchStatus";
 import api from "./api";
 
 
