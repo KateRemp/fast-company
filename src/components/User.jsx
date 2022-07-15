@@ -1,6 +1,6 @@
 import React from "react";
-import Qualitie from "./Qalitie";
-import BookMark from "./Bookmark";
+import Qualitie from "./qalitie";
+import BookMark from "./bookmark";
 
 const User = (props) => {
 
