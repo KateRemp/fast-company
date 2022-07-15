@@ -1,7 +1,7 @@
 import * as users from "./fake.api/user.api"
 
-//API как объект с элементом users.
-//console.log(api)// {users:Module} содержит функцию fetchAll из user.api.js
+//объект API у которого есть объект users у которого есть метод fetchAll который возвращает массив объектов
+//console.log(api)// {users:Module}
 const API = {
 	users
 }
