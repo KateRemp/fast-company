@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import Qualitie from "./Qalitie";
 import BookMark from "./Bookmark";
 
@@ -9,10 +9,9 @@ const User = (props) => {
 			<tr key={props._id}>
 				<td>{props.name}</td>
 				<td>
-					<Qualitie
-						array={props.qualities}
-
-					/>
+					{props.qualities.map((qual) => (
+						<Qualitie key={qual._id} {...qual} />
+					))}
 				</td>
 				<td>{props.profession.name}</td>
 				<td>{props.completedMeetings}</td>

@@ -1,22 +1,11 @@
 import React from "react";
 
-const Qualitie = ({ array }) => {
-
+const Qualitie = ({ color, name }) => {
 	return (
-
-		<>
-			{
-				array.map((item) => (
-					<span className={"badge m-1 bg-" + item.color} key={item._id}>
-						{item.name}
-					</span>
-				))
-			}
-		</>
-
-
-
-	)
+		<span className={"badge m-1 bg-" + color}>
+			{name}
+		</span>
+	);
 };
 
 export default Qualitie
