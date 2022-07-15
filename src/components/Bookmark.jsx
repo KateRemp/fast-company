@@ -4,7 +4,7 @@ const BookMark = ({ status, ...rest }) => {
 	return (
 		<>
 			<button {...rest}>
-				<i className={status ? "bi bi-bookmark" : "bi bi-bookmark-fill"}></i>
+				<i className={status ? "bi bi-bookmark-fill" : "bi bi-bookmark"}></i>
 			</button>
 		</>
 	)
