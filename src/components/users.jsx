@@ -5,7 +5,7 @@ import User from './userr';
 import PropTypes from 'prop-types';
 import GroupList from './groupLists';
 import api from '../api';
-import SearchStatus from './searchStatus';
+import SearchStatus from './searchStatuss';
 
 const Users = ({ users, ...rest }) => {
   const [currentPage, setCurrentPage] = useState(1);
