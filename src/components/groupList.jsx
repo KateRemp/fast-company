@@ -10,7 +10,6 @@ const GroupList = ({
 }) => {
   // ели это массив тo делаем объект
   items = Object.assign({}, items);
-  console.log('hi');
   return (
     <ul className="list-group">
       {Object.keys(items).map((item) => (
