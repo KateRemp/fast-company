@@ -1,7 +1,7 @@
-import * as users from './fake.api/user.api';
-// объект API у которого есть объект users у которого есть метод fetchAll который возвращает массив объектов
-// console.log(api)//{users:Module}
+import users from './fake.api/user.api';
+import professions from './fake.api/professions.api';
 const API = {
-  users
+  users,
+  professions
 };
 export default API;
