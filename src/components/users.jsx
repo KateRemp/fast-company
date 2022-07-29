@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import { paginate } from '../utils/paginate';
-import Pagination from './pagination';
-import User from './user';
+import Pagination from './paginations';
+import User from './userr';
 import PropTypes from 'prop-types';
-import GroupList from './groupList';
+import GroupList from './groupLists';
 import api from '../api';
 import SearchStatus from './searchStatus';
 

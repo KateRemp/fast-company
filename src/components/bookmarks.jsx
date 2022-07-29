@@ -1,8 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-// bookmarks
 
 const BookMark = ({ status, ...rest }) => {
+  console.log('hi');
   return (
     <>
       <button {...rest}>
@@ -15,5 +15,4 @@ const BookMark = ({ status, ...rest }) => {
 BookMark.propTypes = {
   status: PropTypes.bool.isRequired
 };
-
 export default BookMark;
