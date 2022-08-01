@@ -30,7 +30,7 @@ const Users = ({ users, ...rest }) => {
 
   const filteredUsers = selectedProf
     ? users.filter((user) => {
-        console.log(JSON.stringify(user.profession));
+        // console.log(JSON.stringify(user.profession));
         return JSON.stringify(user.profession) === JSON.stringify(selectedProf);
         /* или отфильтровать по _id:
 return (
