@@ -3,25 +3,25 @@ module.exports = {
     browser: true,
     es2021: true,
   },
-  extends: ["plugin:react/recommended", "standard"],
+  extends: ['plugin:react/recommended', 'standard'],
   parserOptions: {
     ecmaFeatures: {
       jsx: true,
     },
-    ecmaVersion: "latest",
-    sourceType: "module",
+    ecmaVersion: 'latest',
+    sourceType: 'module',
   },
-  plugins: ["react"],
+  plugins: ['react'],
   rules: {
     // indent: ["error", 4], // Отступ количество пробелов
     indent: [0, 4],
 
-    semi: [2, "always"], // Точка с запятой в конце строки
+    semi: [2, 'always'], // Точка с запятой в конце строки
 
     // Ошибка при наличии пробела при обозночении функции, уберём её
-    "space-before-function-paren": [
-      "error",
-      { anonymous: "always", named: "never" },
+    'space-before-function-paren': [
+      'error',
+      { anonymous: 'always', named: 'never' },
     ],
 
     // Использование двойных кавычек
