@@ -8,11 +8,12 @@ import SearchStatus from './searchStatus';
 import UserTable from './usersTable';
 import _ from 'lodash';
 
-const Users = () => {
+const UsersList = () => {
   const [currentPage, setCurrentPage] = useState(1);
   const [professions, setProfession] = useState();
   const [selectedProf, setSelectedProf] = useState();
   const [sortBy, setSortBy] = useState({ path: 'name', order: 'asc' });
+  const [userSearch, setUserSearch] = useState();
   const pageSize = 8;
   // Refactoring  Сортировка 9
   const [users, setUsers] = useState();
@@ -38,9 +39,11 @@ const Users = () => {
   }, []);
   useEffect(() => {
     setCurrentPage(1);
-  }, [selectedProf]);
+    console.log(userSearch);
+  }, [selectedProf, userSearch]);
 
   const handleProfessionSelect = (item) => {
+    setUserSearch('');
     setSelectedProf(item);
   };
 
@@ -66,6 +69,10 @@ JSON.stringify(selectedProf._id)
 );
 */
         })
+      : userSearch
+      ? users.filter((user) => {
+          return user.name.toLowerCase().includes(userSearch.toLowerCase());
+        })
       : users;
 
     const count = filteredUsers.length;
@@ -79,6 +86,11 @@ JSON.stringify(selectedProf._id)
 
     const clearFilter = () => {
       setSelectedProf();
+    };
+
+    const handleUserSearch = ({ target }) => {
+      setSelectedProf(); // show all users
+      setUserSearch(target.value);
     };
 
     return (
@@ -97,6 +109,13 @@ JSON.stringify(selectedProf._id)
         )}
         <div className="d-flex flex-column">
           <SearchStatus length={count} />
+          <input
+            type="text"
+            placeholder="Search..."
+            name="searchname"
+            value={userSearch}
+            onChange={handleUserSearch}
+          />
           {count > 0 && (
             <UserTable
               users={usersCrop}
@@ -121,8 +140,4 @@ JSON.stringify(selectedProf._id)
   return 'loading...';
 };
 
-// Users.propTypes = {
-//   users: PropTypes.array
-// };
-
-export default Users;
+export default UsersList;

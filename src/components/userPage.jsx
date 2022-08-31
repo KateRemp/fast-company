@@ -17,14 +17,14 @@ const UserPage = ({ userId }) => {
   console.log(user);
   if (user) {
     return (
-      <>
+      <div>
         <h1>{user.name}</h1>
-        <h2>Профессия:{user.profession.name}</h2>
+        <h2>Профессия: {user.profession.name}</h2>
         <QualitiesList qualities={user.qualities} />
-        <h6>completedMeetings:{user.completedMeetings}</h6>
-        <h2>Rate:{user.rate}</h2>
-        <button onClick={() => handleBackToList()}>Все пользователи</button>
-      </>
+        <p>completedMeetings: {user.completedMeetings}</p>
+        <h2>Rate: {user.rate}</h2>
+        <button onClick={handleBackToList}>Все пользователи</button>
+      </div>
     );
   }
   return 'loading...';

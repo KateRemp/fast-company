@@ -1,9 +1,9 @@
 import React from 'react';
 import { Route, Switch } from 'react-router-dom';
 import NavBar from './components/navBar';
-import Login from './components/login';
-import Main from './components/main';
-import UsersLayout from './components/usersLayout';
+import Login from './layouts/login';
+import Main from './layouts/main';
+import Users from './layouts/users';
 
 const App = () => {
   return (
@@ -12,7 +12,7 @@ const App = () => {
       <Switch>
         <Route path="/" exact component={Main} />
         <Route path="/login" component={Login} />
-        <Route path="/users/:userId?" component={UsersLayout} />
+        <Route path="/users/:userId?" component={Users} />
       </Switch>
     </>
   );
