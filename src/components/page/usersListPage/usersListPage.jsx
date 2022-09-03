@@ -1,19 +1,19 @@
 import React, { useState, useEffect } from 'react';
-import { paginate } from '../utils/paginate';
-import Pagination from './pagination';
+import { paginate } from '../../../utils/paginate';
+import Pagination from '../../common/pagination';
 // import PropTypes from 'prop-types';
-import GroupList from './groupList';
-import api from '../api';
-import SearchStatus from './searchStatus';
-import UserTable from './usersTable';
+import GroupList from '../../common/groupList';
+import api from '../../../api';
+import SearchStatus from '../../ui/searchStatus';
+import UserTable from '../../ui/usersTable';
 import _ from 'lodash';
 
-const UsersList = () => {
+const UsersListPage = () => {
   const [currentPage, setCurrentPage] = useState(1);
   const [professions, setProfession] = useState();
   const [selectedProf, setSelectedProf] = useState();
   const [sortBy, setSortBy] = useState({ path: 'name', order: 'asc' });
-  const [userSearch, setUserSearch] = useState();
+  const [searchQuery, setSearchQuery] = useState('');
   const pageSize = 8;
   // Refactoring  Сортировка 9
   const [users, setUsers] = useState();
@@ -39,11 +39,10 @@ const UsersList = () => {
   }, []);
   useEffect(() => {
     setCurrentPage(1);
-    console.log(userSearch);
-  }, [selectedProf, userSearch]);
+  }, [selectedProf, searchQuery]);
 
   const handleProfessionSelect = (item) => {
-    setUserSearch('');
+    if (searchQuery !== '') setSearchQuery('');
     setSelectedProf(item);
   };
 
@@ -69,9 +68,9 @@ JSON.stringify(selectedProf._id)
 );
 */
         })
-      : userSearch
+      : searchQuery
       ? users.filter((user) => {
-          return user.name.toLowerCase().includes(userSearch.toLowerCase());
+          return user.name.toLowerCase().includes(searchQuery.toLowerCase());
         })
       : users;
 
@@ -88,9 +87,9 @@ JSON.stringify(selectedProf._id)
       setSelectedProf();
     };
 
-    const handleUserSearch = ({ target }) => {
-      setSelectedProf(); // show all users
-      setUserSearch(target.value);
+    const handleSearchQuery = ({ target }) => {
+      setSelectedProf(undefined); // show all users
+      setSearchQuery(target.value);
     };
 
     return (
@@ -112,9 +111,9 @@ JSON.stringify(selectedProf._id)
           <input
             type="text"
             placeholder="Search..."
-            name="searchname"
-            value={userSearch}
-            onChange={handleUserSearch}
+            name="searchQuery"
+            value={searchQuery}
+            onChange={handleSearchQuery}
           />
           {count > 0 && (
             <UserTable
@@ -140,4 +139,4 @@ JSON.stringify(selectedProf._id)
   return 'loading...';
 };
 
-export default UsersList;
+export default UsersListPage;

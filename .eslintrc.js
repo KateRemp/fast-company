@@ -23,7 +23,7 @@ module.exports = {
       'error',
       { anonymous: 'always', named: 'never' },
     ],
-
+    'multiline-ternary': ['off'],
     // Использование двойных кавычек
     //quotes: ['error', 'double', { allowTemplateLiterals: true }],
   },
