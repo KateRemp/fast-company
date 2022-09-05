@@ -1,14 +1,15 @@
 import React, { useState, useEffect } from 'react';
 import TextField from '../common/form/textField';
 import { validator } from '../../utils/validator.';
+import CheckBoxField from '../common/form/checkBoxField';
 
 const LoginForm = () => {
   // for more inputs just add nextInput:'' to useState({ email: '', password: '', nextInput:'' })
-  const [data, setData] = useState({ email: '', password: '' });
+  const [data, setData] = useState({ email: '', password: '', stayOn: false });
   const [errors, setErrors] = useState({});
   // Сокращаем: Получаем event (e), из него достаём {target}
   // const handleChange is universall for all inputs
-  const handleChange = ({ target }) => {
+  const handleChange = (target) => {
     setData((prevState) => {
       // console.log(prevState);
       return { ...prevState, [target.name]: target.value };
@@ -80,6 +81,9 @@ const LoginForm = () => {
         onChange={handleChange}
         error={errors.password}
       />
+      <CheckBoxField name="stayOn" value={data.stayOn} onChange={handleChange}>
+        Stay signed in
+      </CheckBoxField>
       <button
         type="submit"
         disabled={!isValid}

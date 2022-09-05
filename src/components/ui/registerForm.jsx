@@ -5,6 +5,7 @@ import api from '../../api';
 import SelectField from '../common/form/selectField';
 import RadioField from '../common/form/radioField';
 import MultiSelectField from '../common/form/multiSelect';
+import CheckBoxField from '../common/form/checkBoxField';
 
 const RegisterForm = () => {
   // for more inputs just add nextInput:'' to useState({ email: '', password: '', nextInput:'' })
@@ -13,7 +14,8 @@ const RegisterForm = () => {
     password: '',
     profession: '',
     sex: 'male',
-    qualities: []
+    qualities: [],
+    licence: false
   });
   const [qualities, setQualities] = useState({});
   const [professions, setProfession] = useState();
@@ -26,9 +28,7 @@ const RegisterForm = () => {
   // const handleChange is universall for all inputs
   const handleChange = (target) => {
     console.log(target);
-    setData((prevState) => {
-      return { ...prevState, [target.name]: target.value };
-    });
+    setData((prevState) => ({ ...prevState, [target.name]: target.value }));
   };
 
   const validatorConfig = {
@@ -58,6 +58,11 @@ const RegisterForm = () => {
     profession: {
       isRequired: {
         message: 'profession is required'
+      }
+    },
+    licence: {
+      isRequired: {
+        message: 'License agreement is required'
       }
     }
   };
@@ -126,6 +131,14 @@ const RegisterForm = () => {
         name="qualities"
         label="Qualities"
       />
+      <CheckBoxField
+        name="licence"
+        value={data.licence}
+        onChange={handleChange}
+        error={errors.licence}
+      >
+        I agree to the terms of the <a href="#"> license agreement</a>
+      </CheckBoxField>
       <button
         type="submit"
         disabled={!isValid}
