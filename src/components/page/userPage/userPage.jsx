@@ -8,7 +8,7 @@ import { useHistory } from 'react-router-dom';
 const UserPage = ({ userId }) => {
   const [user, setUser] = useState();
   const history = useHistory();
-  const handleBackToList = () => {
+  const handleClick = () => {
     history.push('/users');
   };
   useEffect(() => {
@@ -23,7 +23,7 @@ const UserPage = ({ userId }) => {
         <Qualities qualities={user.qualities} />
         <p>completedMeetings: {user.completedMeetings}</p>
         <h2>Rate: {user.rate}</h2>
-        <button onClick={handleBackToList}>Все пользователи</button>
+        <button onClick={handleClick}>Все пользователи</button>
       </div>
     );
   }
