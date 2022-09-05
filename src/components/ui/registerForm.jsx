@@ -3,18 +3,29 @@ import TextField from '../common/form/textField';
 import { validator } from '../../utils/validator.';
 import api from '../../api';
 import SelectField from '../common/form/selectField';
+import RadioField from '../common/form/radioField';
+import MultiSelectField from '../common/form/multiSelect';
 
 const RegisterForm = () => {
   // for more inputs just add nextInput:'' to useState({ email: '', password: '', nextInput:'' })
-  const [data, setData] = useState({ email: '', password: '', profession: '' });
+  const [data, setData] = useState({
+    email: '',
+    password: '',
+    profession: '',
+    sex: 'male',
+    qualities: []
+  });
+  const [qualities, setQualities] = useState({});
   const [professions, setProfession] = useState();
   const [errors, setErrors] = useState({});
   useEffect(() => {
     api.professions.fetchAll().then((data) => setProfession(data));
+    api.qualities.fetchAll().then((data) => setQualities(data));
   }, []);
   // Сокращаем: Получаем event (e), из него достаём {target}
   // const handleChange is universall for all inputs
-  const handleChange = ({ target }) => {
+  const handleChange = (target) => {
+    console.log(target);
     setData((prevState) => {
       return { ...prevState, [target.name]: target.value };
     });
@@ -97,6 +108,23 @@ const RegisterForm = () => {
         options={professions}
         error={errors.profession}
         label="Profession"
+      />
+      <RadioField
+        options={[
+          { name: 'Male', value: 'male' },
+          { name: 'Female', value: 'female' },
+          { name: 'Other', value: 'other' }
+        ]}
+        value={data.sex}
+        name="sex"
+        onChange={handleChange}
+        label="Sex"
+      />
+      <MultiSelectField
+        options={qualities}
+        onChange={handleChange}
+        name="qualities"
+        label="Qualities"
       />
       <button
         type="submit"
