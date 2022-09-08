@@ -8,9 +8,8 @@ export function validator(data, config) {
         if (typeof data === 'boolean') {
           statusValidate = !data;
         } else {
-          statusValidate = data.trim() === '';
+          statusValidate = data === ''; // data.trim() === ''
         }
-
         break;
       case 'isEmail': {
         const emailRegExp = /^\S+@\S+\.\S+$/g;

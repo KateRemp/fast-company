@@ -1,20 +1,19 @@
 import React, { useState } from 'react';
 import LoginForm from '../components/ui/loginForm';
+import { useParams } from 'react-router-dom';
 import RegisterForm from '../components/ui/registerForm';
-import { useParams, Link } from 'react-router-dom';
 
 const Login = () => {
-  const params = useParams();
-  const { type } = params;
-  console.log(params.type);
+  const { type } = useParams();
   const [formType, setFormType] = useState(
     type === 'register' ? type : 'login'
   ); // po default otkrivaetsja forma login
-  const toggleFormType = () => {
+  const toggleFormType = (params) => {
     setFormType((prevState) =>
       prevState === 'register' ? 'login' : 'register'
     );
   };
+
   return (
     <div className="container mt-5">
       <div className="row">
@@ -25,9 +24,9 @@ const Login = () => {
               <RegisterForm />
               <p>
                 Already have account?{' '}
-                <Link to={'login'} role="button" onClick={toggleFormType}>
+                <a role="button" onClick={toggleFormType}>
                   Sign In
-                </Link>
+                </a>
               </p>
             </>
           ) : (
@@ -36,13 +35,10 @@ const Login = () => {
               <LoginForm />
               <p>
                 Dont have account?{' '}
-                <Link
-                  to={'/login/register'}
-                  role="button"
-                  onClick={toggleFormType}
-                >
+                <a role="button" onClick={toggleFormType}>
+                  {' '}
                   Sign Up
-                </Link>
+                </a>
               </p>
             </>
           )}

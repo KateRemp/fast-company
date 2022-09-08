@@ -2,8 +2,7 @@ import React, { useState, useEffect } from 'react';
 import api from '../../../api';
 import PropTypes from 'prop-types';
 import Qualities from '../../ui/qualities/qualitiesList';
-import { useHistory } from 'react-router-dom';
-// import React from 'react';
+import { useHistory, Link } from 'react-router-dom';
 
 const UserPage = ({ userId }) => {
   const [user, setUser] = useState();
@@ -14,7 +13,7 @@ const UserPage = ({ userId }) => {
   useEffect(() => {
     api.users.getById(userId).then((data) => setUser(data));
   }, []);
-  console.log(user);
+
   if (user) {
     return (
       <div>
@@ -24,6 +23,9 @@ const UserPage = ({ userId }) => {
         <p>completedMeetings: {user.completedMeetings}</p>
         <h2>Rate: {user.rate}</h2>
         <button onClick={handleClick}>Все пользователи</button>
+        <button>
+          <Link to={`/users/${user._id}/edit`}>edit</Link>
+        </button>
       </div>
     );
   }

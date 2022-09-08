@@ -10,7 +10,6 @@ const qualities = {
     name: 'Странный',
     color: 'secondary'
   },
-
   buller: {
     _id: '67rdca3eeb7f6fgeed4711012',
     name: 'Троль',
