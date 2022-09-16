@@ -1,7 +1,7 @@
 import React from 'react';
 import UserPage from '../components/page/userPage';
 import UsersListPage from '../components/page/usersListPage';
-import EditForm from '../components/ui/editForm';
+import EditForm from '../components/page/editUserPage/editUserPage';
 import { useParams } from 'react-router-dom';
 
 const Users = () => {
